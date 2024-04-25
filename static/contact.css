@@ -1,0 +1,110 @@
+/* Contact form styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light gray background color */
+}
+
+header {
+    background-color: #66ccff; /* Light blue background color */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Distribute items along the main axis */
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li:first-child {
+    margin-right: auto; /* Push the "Home" button to the left */
+}
+
+nav ul li a {
+    color: #333; /* Dark gray text color */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Add some rounded corners to the navbar items */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+nav ul li a:hover {
+    background-color: #99ccff; /* Lighter blue background color on hover */
+    color: #fff; /* Change text color to white on hover */
+}
+
+nav ul li a.active {
+    background-color: #99ccff; /* Lighter blue background color for the active item */
+}
+
+footer {
+    background-color: #333; /* Dark gray background color for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+/* Contact form styles */
+h1{
+    text-align: center;
+}
+
+form {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.submit-btn {
+    background-color: #66ccff;
+    color: #fff;
+    font-size: larger;
+    text-decoration: solid;
+    padding: 15px 30px; /* Larger padding */
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto; /* Center align the button */
+}
+
+.submit-btn:hover {
+    background-color: #33aaff;
+}
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}

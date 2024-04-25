@@ -1,0 +1,202 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 200vh;
+}
+.blur{
+  height:300vh ;
+  display: none;
+}
+.url-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+header {
+    padding: 10px 0;
+    background-color: #c7e22a;
+}
+i{
+    color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Distribute items along the main axis */
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li:first-child {
+    margin-right: auto; /* Push the "Home" button to the left */
+}
+
+nav ul li a {
+    color: orange; /* Dark gray text color */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Add some rounded corners to the navbar items */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+nav ul li a:hover {
+    background-color: orange; /* Lighter blue background color on hover */
+    color: #fff;
+    i{
+        color: #fff;
+    } /* Change text color to white on hover */
+}
+
+
+footer {
+    /* position: absolute;
+    bottom: 0px; */
+    background-color: #333; /* Dark gray background color for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+article{
+    height: 100vh;
+    background: url("background.png"); 
+    background-size: contain;
+}
+.section {
+    font-family: Arial, sans-serif;
+    height: 200vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,rgba(2, 234, 242, 0.033),rgba(25, 5, 116, 0.5));
+    background-size: contain;
+    
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: 300px;
+  }
+  .box1 {
+    position: absolute;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #c5d7e2;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .box2 {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: #c5d7e2;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .box1:hover,.box2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  #text1{
+    position: absolute;
+    left: 230px;
+  }
+  #text2{
+    position: absolute;
+    left: 65%;
+  }
+  #im1{
+    background: url("description.jpg"); 
+    background-size: cover;
+  }
+  #im2{
+    background: url("values.jpg");
+    background-size: cover;
+  }
+  #im3{
+    background: url("career.jpg"); 
+    background-size: cover;
+  }
+  #im4{
+    background: url("salary.jpg"); 
+    background-size: cover;
+  }
+  #im5{
+    background: url("enviroment.png"); 
+    background-size: cover;
+  }
+  #im6{
+    background: url("reputation.png"); 
+    background-size: cover;
+  }
+  #im7{
+    background: url("life.jpg"); 
+    background-size: cover;
+  }
+  #im8{
+    background: url("team.png"); 
+    background-size: cover;
+  }
+#para{
+    margin-left: 5px;
+    display: none;
+}
+.box4,.box3,.box5 {
+    width: 200px;
+    height: 200px;
+    background: #c5d7e2;
+    background-size: cover;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .box1.clicked, .box2.clicked {
+    transform: scale(3);
+    position: absolute;
+    left: 40%;
+    z-index: 1;
+    #para{
+      z-index: 1;
+      display: contents;
+      font-size: 6px;
+    }
+    
+  }
+#im1.clicked,#im2.clicked,#im3.clicked,#im4.clicked,#im5.clicked,#im6.clicked,#im7.clicked,#im8.clicked{
+  background: rgb(25, 5, 116);
+  background-size: cover;
+}
+body.blur {
+  filter: blur(5px);
+}
+#headline{
+  font-size: x-large;
+  text-decoration: wavy;
+}

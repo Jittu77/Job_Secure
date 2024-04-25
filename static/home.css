@@ -1,0 +1,633 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: fit-content;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #ccf0f7;
+}
+.blur{
+  height:300vh ;
+  display: none;
+}
+header {
+    padding: 10px 0;
+    background-color: #DDD0C8;/* Lighter blue background color on hover */
+    color: #4F0341;
+}
+i{
+  color: #4F0341;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Distribute items along the main axis */
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li:first-child {
+    margin-right: auto; /* Push the "Home" button to the left */
+}
+
+nav ul li a {
+    color: #4F0341; /* Dark gray text color */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Add some rounded corners to the navbar items */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+nav ul li a:hover {
+  background-color: cyan;
+  box-shadow: 0px 0px 5px cyan;
+  text-shadow: 0px 0px 5px cyan;
+  color: #4F0341;
+    i{
+        box-shadow: 0px 0px 5px cyan;
+        text-shadow: 0px 0px 5px cyan;
+        background-color: cyan;
+        color: #333;
+    } /* Change text color to white on hover */
+}
+
+
+footer {
+    /* position: absolute;
+    bottom: 0px; */
+    background-color: #4F0341; /* Dark gray background color for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+article{
+    height: 100vh;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    font-family: Arial, sans-serif;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .url-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    background: linear-gradient(to right,rgba(2, 234, 242, 0.033),rgba(1, 19, 61, 0.5));
+    background-size: contain;
+  }
+  .btn-primary {
+    /* display: inline-block; */
+    padding: 8px 14px;
+    font-size: 15px;
+    text-align: right;
+    text-decoration: none;
+    background-color: #4285f4;
+    color: #fff;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;  
+  }
+  .btn-primary:hover{
+    box-shadow: 0px 0px 30px #0d0375;
+  }
+  .explore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .explore_button {
+    /* display: inline-block; */
+    padding: 8px 14px;
+    font-size: 15px;
+    text-align: right;
+    text-decoration: none;
+    background-color: #4285f4;
+    color: #fff;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 0px 30px black;  
+  }
+  .explore_button:hover{
+    box-shadow: 0px 0px 30px #074ec0;
+  }
+  
+  .output{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+  }
+  .radhe{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+  }
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: 300px;
+  }
+  .box1 {
+    position: absolute;
+    left: 60px;
+    width: 200px;
+    height: 200px;
+    background-color: #c5d7e2;
+    color: #4F0341;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px black;
+    transition: all 0.3s ease;
+  }
+  .box2 {
+    position: absolute;
+    left: 60%;
+    width: 200px;
+    height: 200px;
+    background-color: #c5d7e2;
+    color: #4F0341;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px black;
+    transition: all 0.3s ease;
+  }
+
+  .box1:hover,.box2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 5px rgb(3, 7, 83);
+  }
+  #text1{
+    position: absolute;
+    left: 280px;
+    color: #4F0341;
+  }
+  #text2{
+    position: absolute;
+    left: 75%;
+    color: #4F0341;
+  }
+  #im1{
+    background: url("description.jpg"); 
+    background-size: cover;
+  }
+  #im2{
+    background: url("values.jpg");
+    background-size: cover;
+  }
+  #im3{
+    background: url("career.jpg"); 
+    background-size: cover;
+  }
+  #im4{
+    background: url("salary.jpg"); 
+    background-size: cover;
+  }
+  #im5{
+    background: url("enviroment.png"); 
+    background-size: cover;
+  }
+  #im6{
+    background: url("reputation.png"); 
+    background-size: cover;
+  }
+  #im7{
+    background: url("life.jpg"); 
+    background-size: cover;
+  }
+  #im8{
+    background: url("team.png"); 
+    background-size: cover;
+  }
+#para{
+    margin-left: 5px;
+    display: none;
+    color: #4F0341;
+}
+  .box1:hover {
+    transform: scale(3);
+    position: absolute;
+    margin-left: 300px;
+    z-index: 1;
+    #para{
+      z-index: 1;
+      display: contents;
+      font-size: 6px;
+      color: #4F0341;
+    }
+    background-color: cyan;
+    box-shadow: 0px 0px 5px black;
+    
+  }
+  .box2:hover {
+    transform: scale(3);
+    position: absolute;
+    left: 40%;
+    z-index: 1;
+    #para{
+      z-index: 1;
+      display: contents;
+      font-size: 6px;
+      color: #4F0341;
+    }
+    background-color: cyan;
+    box-shadow: 0px 0px 5px black;
+    
+  }
+#im1:hover,#im2:hover,#im3:hover,#im4:hover,#im5:hover,#im6:hover,#im7:hover,#im8:hover{
+  background: #FFFFFF;
+  background-size: cover;
+  box-shadow: 0px 0px 30px black;
+  
+}
+body.blur {
+  filter: blur(5px);
+}
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+#headline{
+  padding: 15px 10px 15px 10px;
+  font-size: x-large;
+  text-align: center;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px black;
+}
+.table_main {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  display: block;
+  overflow-x: auto;
+}
+
+th, td {
+  border: 0.1px solid black;
+  padding: 8px;
+  /* min-width: 50px; */
+  text-align: center;
+  /* box-shadow: 0px 0px 3px black; */
+}
+
+th {
+  background-color: #f2f2f2;
+  
+}
+
+
+.footer-distributed{
+	background:   darkslategray;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 13px 14px;
+}
+
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Open Sans', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+  font-weight:400;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #222;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 10px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+  font-weight:400;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  lightseagreen;
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	/* background-color:  #33383b; */
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+h1 a {
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+}
+nav {
+  /* background-color: rgba(160, 186, 193, 0.077); */
+  /* color: #2f2828; */
+  padding: 10px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  /* color: #fff; */
+  text-decoration: none;
+}
+
+/* Define colors for the toggle button */
+.nav-toggle {
+  background-color: #ff0044;
+  /* Blue color */
+  color: #fff;
+  /* White text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* On hover, darken the background color */
+.nav-toggle:hover {
+  background-color: #0056b3;
+  /* Darker blue */
+}
+
+/* When active, change the background color */
+.show-nav .nav-toggle {
+  background-color: #dc3545;
+  /* Red color */
+}
+
+/* Additional styles for animation or positioning */
+
+
+.contact-btn {
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #005fa3;
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.form-label {
+  color: antiquewhite;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  /* background-color: #fff; */
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .nav-links li {
+    margin-bottom: 10px;
+  }
+
+  .nav-toggle {
+    display: block;
+    color: #0077cc;
+  }
+
+  .show-nav .nav-links {
+    display: block;
+  }}
+
+  a {
+    color: blue;
+  }
