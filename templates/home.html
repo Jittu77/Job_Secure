@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+</head>
+
+<body>
+    <nav>
+        <br><br><br>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1 style="color: rgb(160, 47, 98);"><strong><a class="font-effect-fire"
+                            style="color: rgb(143, 36, 84); " href="{{url_for('home')}}">JOB_Secure</a></strong></h1>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{url_for('home')}}" class="fas fa-home">Home</a></li>
+                <li><a href="#job_list_all" class="fas fa-cogs">JOb_list</a></li>
+                <li><a href="{{url_for('home')}}" class="fas fa-images">Our Works</a></li>
+                <li><a href=#footer_contact class="fas fa-info-circle">About Us</a></li>
+                <li><a href="{{url_for('contact')}}" class="fas fa-envelope">Feedback</a></li>
+            </ul>
+            <button class="contact-btn">CONTACT US</button>
+        </div>
+    </nav>
+    <br><br>
+    <!-- <header>
+        <nav style="margin-top: 30px;">
+            <ul>
+                <li><a href="/" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/about"><i class="fas fa-info-circle"></i> AboutUs</a></li>
+                <li><a href="/contact"><i class="fas fa-envelope"></i> ContactUs</a></li>
+                <li><a href="/login"><i class="fas fa-cogs"></i> Login</a></li>
+                <li><a href="/profile"><i class="fas fa-images"></i> Profile</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <main>
+        <div class="job_container" style="margin-top: 80px; margin-left: 10%; margin-right: 10%; margin-bottom: 50px;">
+            <div class="job_container_link">
+                <form action="/submit" method="post">
+                    <div class="form-group">
+                        <label for="url"
+                            style="text-align: center; font-weight: bolder; font-size: xx-large; color: #4F0341;"><b>Enter
+                                JOB URL:</b></label><br><br>
+                        <input type="url" class="url-input" id="url" name="url" placeholder="Enter URL" required>
+                    </div>
+                    <button type="submit" value="url" name="submit" class="btn-primary"><b>ANALYSE</b></button>
+                </form>
+            </div>
+            <div class="explore">
+                <!-- <form action="/submit" method="post"></form>
+                        <button type="submit" value=123 name="submit" id="showMessageButton" class="explore_button"><b ><a href="http://"> EXPLORE THE LATEST JOBS</a></b></button>
+                    </form> -->
+            </div>
+            <br><br><br>
+
+            {% if text%}
+            <div class="output">
+                <div class="text"> <span>{{text}} </span> <span> For more information: <a href="{{url_job}}"> Click
+                            here</a></span></div>
+                <!-- <div class="radhe"><p><span>For more information: <a href="{{url_job}}"> Click here</a></span></p></div> -->
+            </div>
+            {%endif%}
+
+            <br><br>
+            <div style="display: flex; align-items: center; justify-content: center;" id="job_list_all">
+                <p class="explore_button"
+                    style=" font-size:larger; width:fit-content;text-align: center; color: white; "><a
+                        href="{{ url_for('jobDetails') }}" style="text-decoration: none; color: white;"> <b>EXPLORE THE
+                            LATEST JOBS</b></a></p>
+                <div class="news-links" style="margin-left: 30px;">
+                    <!-- <h2>Latest News Headlines</h2> -->
+                    <form action="/submit" method="post">
+                        <label for="job_website" style="font-size: larger;">Choose Your Job Sector :</label>
+                        <select name="job_website" id="job_website">
+                            <option value="CS">Cyber security</option>
+                            <option value="QA">QA Engineer</option>
+                            <option value="ML">MAchine Learning</option>
+                            <option value="Web">Web developers</option>
+                            <option value="DM">Digital Marketing</option>
+                            <option value="Law">Law</option>
+
+                        </select>
+                        <button type="submit" value="job_website" name="submit">Submit</button><br>
+                        <p><span style="color: lightcoral;">NOTE: </span>coming soon!! Lists for more Job sectors! for
+                            now
+                            paste your URLs of your job.</p>
+                    </form>
+                </div>
+            </div>
+            <br><br>
+
+
+
+            <div class="job_container_list">
+
+                <table class="link_main" border="1" id="message" class="hidden">
+                    <thead>
+                        <tr>
+                            {% for element_headline in headers %}
+                            <th>{{element_headline}}</th>
+
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key in job_links_headlines1 %}
+                        <tr>
+                            <td>{{ key[0] }}</td>
+                            <td style="color: blue;">{{ key[1] }}</td>
+                            <td><button style="background-color: lightcyan;"
+                                    onclick="copyToClipboard('{{ key[1] }}')">Copy Link</button></td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                    <script>
+                        document.getElementById('showMessageButton').addEventListener('click', function () {
+                            document.getElementById('message').classList.remove('hidden');
+                        });
+                    </script>
+                </table>
+                <script>
+                    function copyToClipboard(text) {
+                        var dummy = document.createElement("textarea");
+                        document.body.appendChild(dummy);
+                        dummy.value = text;
+                        dummy.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(dummy);
+                        alert("Link copied to clipboard: " + text);
+                    }
+                </script>
+
+            </div>
+            <br><br><br>
+
+        </div>
+
+
+
+        <br><br><br><br>
+        <div class="section">
+            <div class="heading">
+                <p id="headline"><b>In the intricate dance of professional life, challenges often emerge like waves
+                        crashing upon the shore.These trials, while daunting, serve as compass points guiding our growth
+                        and resilience.Reflecting on the hurdles encountered within the realm of employment, one unveils
+                        a tapestry woven with threads of adversity and opportunity alike.</p>
+            </div><br>
+            <h1 style="color: #4F0341;"><b>Here are the points we need to consider</b></h1>
+            <div class="container">
+                <div class="box1" id="im1">
+                    <p id="para">
+                        <b>Understanding the job description before accepting a job offer is crucial for several
+                            reasons. It provides clarity on the role's responsibilities, ensuring alignment between the
+                            employer's needs and the candidate's capabilities. By assessing the requirements, candidates
+                            can determine their suitability for the position and evaluate its potential impact on their
+                            long-term career goals. Additionally, understanding the job description helps candidates
+                            gauge cultural fit and prepare effectively for interviews, increasing their chances of
+                            success. Ultimately, this proactive approach empowers individuals to make informed decisions
+                            about their career path, setting the stage for a fulfilling professional journey.</b>
+                    </p>
+                </div>
+                <h2 id="text1">Job description And <br>Requirements</h2>
+
+                <div class="box2" id="im2">
+                    <p id="para"><b>Embodying our company culture and values is not just a philosophy; it's our way of
+                            life. From the way we collaborate to the decisions we make, every action is guided by our
+                            commitment to integrity, innovation, and inclusivity.Together, we cultivate an environment
+                            where diversity thrives, ideas flourish, and every individual is empowered to reach their
+                            full potential. Our culture isn't just what we do; it's who we are, shaping our identity and
+                            driving us towards a shared vision of excellence."</b></p>
+                </div>
+                <h2 id="text2">Company Culture and Values </h2>
+            </div>
+            <div class="container">
+                <div class="box1" id="im3">
+                    <p id="para"><b>"At our company, career advancement isn't just a possibility; it's a promise we
+                            strive to fulfill for every member of our team. We believe in nurturing talent, providing
+                            ongoing training, and creating pathways for professional growth. Whether it's through
+                            mentorship programs, skills development initiatives, or opportunities for cross-functional
+                            collaboration, we're dedicated to helping our employees achieve their career aspirations.
+                            With a commitment to recognizing potential and rewarding ambition, we ensure that every
+                            individual has the chance to excel and explore new horizons within our organization</b></p>
+                </div>
+                <h2 id="text1">Career Advancement and <br>Opportunities</h2>
+
+                <div class="box2" id="im4">
+                    <p id="para"><b></b>At our company, we understand the importance of offering competitive salaries
+                        and comprehensive benefits to our employees. We believe in recognizing the value of their
+                        contributions by providing compensation packages that reflect their skills, experience, and
+                        dedication. Alongside competitive salaries, we offer a range of benefits including health
+                        insurance, retirement plans, paid time off, flexible work arrangements, professional development
+                        opportunities, and more. Our aim is to not only attract top talent but also to foster a
+                        supportive environment where employees feel valued, motivated, and empowered to thrive both
+                        personally and professionally."
+                    </p>
+                </div>
+                <h2 id="text2">Salary And Benefits</h2>
+            </div>
+            <div class="container">
+                <div class="box1" id="im5">
+                    <p id="para"><b>At our company, we prioritize creating a positive and inclusive working environment
+                            where every individual feels respected, supported, and inspired to do their best work. We
+                            cultivate a culture of collaboration, open communication, and mutual respect, fostering a
+                            sense of belonging and camaraderie among our team members. Our workspace is designed to
+                            encourage creativity, productivity, and innovation, with modern amenities and flexible
+                            arrangements to accommodate different work styles. We believe that a healthy work-life
+                            balance is essential for overall well-being, so we provide resources and initiatives to
+                            support our employees in achieving this balance.</b></p>
+                </div>
+                <h2 id="text1">Work Enviroment and location</h2>
+
+                <div class="box2" id="im6">
+                    <p id="para"><b>At our company, we take immense pride in our reputation for excellence and stability
+                            within the industry. With a track record of delivering high-quality products/services and
+                            maintaining strong relationships with clients, partners, and stakeholders, we have built a
+                            reputation that precedes us. Our commitment to integrity, reliability, and ethical business
+                            practices has earned us the trust and respect of our peers and customers alike. Furthermore,
+                            our solid financial standing and strategic planning ensure our stability in the face of
+                            market fluctuations and challenges. We are dedicated to upholding our reputation and
+                            stability, remaining steadfast in our pursuit of long-term success and growth.</b></p>
+                </div>
+                <h2 id="text2">Company Reputation and Stability</h2>
+            </div>
+            <div class="container">
+                <div class="box1" id="im7">
+                    <p id="para"><b>At our company, we understand the importance of achieving a healthy work-life
+                            balance for our employees. We believe that a harmonious equilibrium between professional
+                            responsibilities and personal well-being is essential for overall happiness and
+                            productivity. That's why we offer flexible work arrangements, such as remote work options,
+                            flexible hours, and compressed workweeks, to accommodate the diverse needs of our team
+                            members. Additionally, we encourage employees to prioritize self-care and personal time by
+                            providing ample vacation days, wellness programs, and resources for managing stress. By
+                            fostering a supportive culture that values work-life balance, we empower our employees to
+                            thrive both in their careers and in their personal lives."</b></p>
+                </div>
+                <h2 id="text1">Work-life Balance</h2>
+
+                <div class="box2" id="im8">
+                    <p id="para"><b>At our company, we recognize the pivotal role that team dynamics and leadership play
+                            in driving success and fostering a positive work environment. We believe in cultivating
+                            strong team dynamics characterized by collaboration, trust, and open communication. Our
+                            leaders are not just managers but mentors who inspire, guide, and empower their teams to
+                            achieve their full potential. They lead by example, promoting a culture of accountability,
+                            transparency, and respect. By fostering a culture of continuous learning and development,
+                            our leaders encourage innovation, creativity, and adaptability among team members.</b></p>
+                </div>
+                <h2 id="text2">Team Dynamics and leadership</h2>
+            </div>
+        </div>
+    </main>
+    <br>
+
+    <script>
+        // Get all container elements
+        const containers = document.querySelectorAll('.container');
+
+        // Loop through each container element
+        containers.forEach(function (container) {
+            const box1 = container.querySelector('.box1');
+            const box2 = container.querySelector('.box2');
+
+            // Add click event listener to box1 in each container
+            box1.addEventListener('click', function () {
+                this.classList.toggle('clicked');
+            });
+
+            // Add click event listener to box2 in each container
+            box2.addEventListener('click', function () {
+                this.classList.toggle('clicked');
+            });
+        });
+    </script>
+    <script>
+        // Function to toggle blur class on body
+        function toggleBlur() {
+            document.body.classList.toggle('blur');
+        }
+
+        // Add click event listener to the content
+        document.querySelector('.content').addEventListener('click', toggleBlur);
+    </script>
+
+    <BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR>
+    <footer class="footer-distributed" id="footer_contact">
+
+        <div class="footer-left" style="margin-left: 25px;">
+
+            <h3>The JOb<span>secure</span></h3>
+
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+
+                <a href="#">Blog</a>
+
+
+
+                <a href="#">About</a>
+
+                <a href="#">Faq</a>
+
+                <a href="tel:+917325060600">Contact</a>
+            </p>
+
+            <p class="footer-company-name"> THe News BOOM © 2024</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <a href="https://maps.app.goo.gl/7QzGEHpdevXeyNDcA">
+                    <i class="fa fa-map-marker"></i>
+                </a>
+                <p><span>226028 C.V Raman</span> SRMCEM, Lucknow</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p><a href="tel:+917325060600"></a></p>
+                <p><a href="tel:+917325060600">+91 7325060600</a></p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:su-23014@sitare.org">su-23014@sitare.org</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the Website</span>
+                We are building a plateform where without distractions, user can explore premium jobs in their
+                interest of field (eg: Engineering, Digital Marketing, Law etc.)
+            </p>
+            <div class="footer-icons">
+                <p class="footer-company-about">
+                    <span>About the Website</span>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

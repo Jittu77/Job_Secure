@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/about"><i class="fas fa-info-circle"></i> AboutUs</a></li>
+                <li><a href="/contact"><i class="fas fa-envelope"></i> ContactUs</a></li>
+                <li><a href="/login"><i class="fas fa-cogs"></i> Login</a></li>
+                <li><a href="/profile"><i class="fas fa-images"></i> Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 id="Heading"><b>ABOUT US!</b></h1>
+        <div class="section">
+            <div class="container">
+                <div id="im1"></div>
+            </div>
+            <br>
+            <div class="container">
+                <div id="im2"></div>
+            </div>
+            <br>
+            <div class="container">
+                <div id="im3"></div>
+            </div>
+            <br>
+            <div class="container">
+                <div id="im4"></div>
+            </div>
+            <br>
+            <div class="container">
+                <div id="im5"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 CareerExpress Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
