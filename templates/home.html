@@ -5,16 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Bar</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
-</head>
+    
+	
+	<link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 
-<body>
+    <style>
+
+.table_main {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  display: block;
+  overflow-x: auto;
+  background-color: #f2f2f2
+}
+
+th, td {
+  border: 0.5px solid rgb(38, 21, 21);
+  padding: 8px;
+  /* min-width: 50px; */
+  text-align: center;
+  /* box-shadow: 0px 0px 3px black; */
+}
+
+th {
+  background-color: #f2f2f2;
+  
+}
+    </style>
+</head>
+<!-- style="background-color:  #7dd9eb;" -->
+<body style="background-color:  #7dd9eb;">   
     <nav>
-        <br><br><br>
+        <br>
         <div class="nav-container">
             <div class="nav-logo">
                 <h1 style="color: rgb(160, 47, 98);"><strong><a class="font-effect-fire"
@@ -27,12 +56,12 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{{url_for('home')}}" class="fas fa-home">Home</a></li>
-                <li><a href="#job_list_all" class="fas fa-cogs">JOb_list</a></li>
-                <li><a href="{{url_for('home')}}" class="fas fa-images">Our Works</a></li>
-                <li><a href=#footer_contact class="fas fa-info-circle">About Us</a></li>
-                <li><a href="{{url_for('contact')}}" class="fas fa-envelope">Feedback</a></li>
+                <li><a href=#job_list_all  class="fas fa-cogs">JOb_list</a></li>
+                <li><a href=#works class="fas fa-images">Our Works</a></li>
+                <li><a href=#about class="fas fa-info-circle">About Us</a></li>
+                <li><a href=#contact class="fas fa-envelope">Feedback</a></li>
             </ul>
-            <button class="contact-btn">CONTACT US</button>
+            <button class="contact-btn"><a href=#contact style="font-size:larger; font-weight: 500; color: #4F0341;"><b>CONTACT US</b></a> </button>
         </div>
     </nav>
     <br><br>
@@ -55,7 +84,7 @@
                     <div class="form-group">
                         <label for="url"
                             style="text-align: center; font-weight: bolder; font-size: xx-large; color: #4F0341;"><b>Enter
-                                JOB URL:</b></label><br><br>
+                                JOB URL:</b></label><br>
                         <input type="url" class="url-input" id="url" name="url" placeholder="Enter URL" required>
                     </div>
                     <button type="submit" value="url" name="submit" class="btn-primary"><b>ANALYSE</b></button>
@@ -66,17 +95,19 @@
                         <button type="submit" value=123 name="submit" id="showMessageButton" class="explore_button"><b ><a href="http://"> EXPLORE THE LATEST JOBS</a></b></button>
                     </form> -->
             </div>
-            <br><br><br>
+            <br><br>
 
             {% if text%}
             <div class="output">
-                <div class="text"> <span>{{text}} </span> <span> For more information: <a href="{{url_job}}"> Click
+                <div class="text"> <span>{{text}} </span> <span> ,Salary: {{salary}}, : Location: {{location}}, payperiod: {{payperiod}} For more information: <a href="{{url_job}}"> Click
                             here</a></span></div>
-                <!-- <div class="radhe"><p><span>For more information: <a href="{{url_job}}"> Click here</a></span></p></div> -->
+                <div class="radhe"><p>{{ job_summary }}</p></div>
             </div>
             {%endif%}
 
-            <br><br>
+            {{message12}}
+
+            <br><br><br><br><br>
             <div style="display: flex; align-items: center; justify-content: center;" id="job_list_all">
                 <p class="explore_button"
                     style=" font-size:larger; width:fit-content;text-align: center; color: white; "><a
@@ -106,9 +137,9 @@
 
 
 
-            <div class="job_container_list">
+            <div class="job_container_list" >
 
-                <table class="link_main" border="1" id="message" class="hidden">
+                <table class="link_main" border="4" id="message" class="hidden">
                     <thead>
                         <tr>
                             {% for element_headline in headers %}
@@ -119,8 +150,9 @@
                     </thead>
                     <tbody>
                         {% for key in job_links_headlines1 %}
-                        <tr>
+                        <tr style="background-color: #cdd1d1">
                             <td>{{ key[0] }}</td>
+                            
                             <td style="color: blue;">{{ key[1] }}</td>
                             <td><button style="background-color: lightcyan;"
                                     onclick="copyToClipboard('{{ key[1] }}')">Copy Link</button></td>
@@ -161,7 +193,7 @@
                         and resilience.Reflecting on the hurdles encountered within the realm of employment, one unveils
                         a tapestry woven with threads of adversity and opportunity alike.</p>
             </div><br>
-            <h1 style="color: #4F0341;"><b>Here are the points we need to consider</b></h1>
+            <h1 style="color: #4F0341;" id="works"><b>Here are the points we need to consider</b></h1>
             <div class="container">
                 <div class="box1" id="im1">
                     <p id="para">
@@ -297,6 +329,180 @@
     </script>
 
     <BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR>
+
+    <div class="about_us" id="about">
+        <h1 style="color: rgb(70, 36, 220); text-align: center;"><b>Who We Are</b></h1>
+        <div class="container1">
+            <div class="pen-image" id="img1"></div>
+            <div class="pen-description">
+              <p>Hii There! <br>I am Bharat, currently pursuing my BTech in Computer Science from Sitare University, a prestigious institution for bright and deserving students. I have a strong foundation in computer science principles and languages like Python and Java. </p><br>
+              <div class="logo">
+                <a href="https://github.com/BharatSuthar21">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/github.png"/>
+                </a>
+                <a href="https://www.linkedin.com/in/bharat-suthar-24095923b/">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/>
+                </a>
+            </div>
+            </div>
+          </div>
+    
+          <div class="container1">
+            <div class="pen-image" id="img2"></div>
+            <div class="pen-description">
+              <p> Hello! I'm Vidya, a sophomore at Sitare University. I'm passionate about Machine Learning, exploring its applications and eager to learn more.</p><br>
+              <div class="logo">
+                <a href="https://github.com/vidyabharti9">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/github.png"/>
+                </a>
+                <a href="http://www.linkedin.com/in/vidya-bharti-92163b255">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/>
+                </a>
+            </div>
+            </div>
+          </div>
+            </div>
+          </div>
+    <br>
+    
+          <div class="container1">
+            <div class="pen-image" id="img3"></div>
+            <div class="pen-description">
+              <p>Hi there!<br> 
+                I'm Jitendra currently pursuing B.Tech graduation at Sitare University, I'm Passionate about data science with a knack for turning raw data into actionable insights. My goal is to uncover hidden patterns, drive informed decision-making, and contribute to business success through the power of data</p><br>
+                <div class="logo">
+                    <a href="https://github.com/Jittu77">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/github.png"/>
+                    </a>
+                    <a href="https://linkedin.com/in/jitendra-kumar-155238281">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/>
+                    </a>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="container1">
+            <div class="pen-image" id="img4"></div>
+            <div class="pen-description">
+              <p>Hi there!<br>I am Hemant Jangde a passionate individual with diverse interests and a keen intellect. My enthusiasm for football and chess reflects my love for strategic thinking and competition. Beyond sports, I find joy in exploring the realms of coding and mathematics, where I can exercise my analytical skills and creativity. As a dedicated BTech student at Sitare University, I am committed to learning and growing in the field of technology.</p><br>
+              <div class="logo">
+                <a href="https://github.com/Hemant1415">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/github.png"/>
+                </a>
+                <a href="https://www.linkedin.com/in/hemant-jangde-85a149281/">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/>
+                </a>
+            </div>
+            </div>
+          </div>
+            </div>
+          </div>
+    
+          <div class="container1">
+            <div class="pen-image" id="img5"></div>
+            <div class="pen-description">
+              <p>Hi there!<br> I'm Rashmi Kumari
+                Fresher at Sitare university, I am workaholic person, passionate towards problem solving, good at dance, keen interest in puzzle solving, made few projects in dhp course, regional volleyball player...</p><br>
+                <div class="logo">
+                    <a href="https://github.com/rashu-2375">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/github.png"/>
+                    </a>
+                    <a href="">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/>
+                    </a>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+    <BR></BR><BR></BR><BR></BR><BR></BR>
+    <section class="ftco-section" id="contact">
+		<div class="container">
+			<div class="row justify-content-center">
+				
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper">
+						<div class="row mb-5">
+							<div class="col-md-3">
+								<div class="dbox w-100 text-center">
+			        		
+			        	
+							</div>
+						</div>
+						<div class="row no-gutters">
+							<div class="col-md-7">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<h3 class="mb-4">Contact Us</h3>
+									<div id="form-message-warning" class="mb-4"></div> 
+				      		<div id="form-message-success" class="mb-4">
+				            Your message was sent, thank you!
+				      		</div>
+									<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="name">Full Name</label>
+													<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+												</div>
+											</div>
+											<div class="col-md-6"> 
+												<div class="form-group">
+													<label class="label" for="email">Email Address</label>
+													<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="subject">Subject</label>
+													<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="#">Message</label>
+													<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="Send Message" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-md-5 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-5 img" style="background-image: url(static/images/img.jpg);">
+			          </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="static/js/jquery.min.js"></script>
+  <script src="static/js/popper.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/jquery.validate.min.js"></script>
+  <script src="static/js/main.js"></script>
+
+
+
+
+
+
+    <BR></BR><BR></BR><BR></BR><BR></BR>
     <footer class="footer-distributed" id="footer_contact">
 
         <div class="footer-left" style="margin-left: 25px;">
@@ -352,12 +558,13 @@
                 <p class="footer-company-about">
                     <span>About the Website</span>
                     <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="https://img.icons8.com/material-rounded/24/000000/github.png"><i class="fa fa-github"></i></a>
                     <a href="#"><i class="fa fa-linkedin"></i></a>
                     <a href="#"><i class="fa fa-github"></i></a>
             </div>
 
         </div>
+        
 
     </footer>
 
