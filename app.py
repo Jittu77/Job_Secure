@@ -146,7 +146,7 @@ def submit():
             print(123)
             url = request.form['url']
             original_url=url
-            url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url='+url+'&dynamic=false'
+            url=f'https://api.scrapingdog.com/scrape?api_key={api}&url='+url+'&dynamic=false'
             job_text,location,salary,payperiod=extract_text(url)
             job_summary=summary(job_text)
          
@@ -162,25 +162,26 @@ def submit():
             headers=["Job headline","URL of Jobs", "Copy URL"]
             try:
                 if selected_option == 'QA':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/work-from-home-qa-jobs-SRCH_FW0,14_KO15,17.htm&dynamic=false'
+                    #api = os.get.env(api)
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/work-from-home-qa-jobs-SRCH_FW0,14_KO15,17.htm&dynamic=false'
 
                     
                 elif selected_option == 'ML':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/remote-machine-learning-jobs-SRCH_IL.0,6_IS12563_KO7,23.htm&dynamic=false'
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/remote-machine-learning-jobs-SRCH_IL.0,6_IS12563_KO7,23.htm&dynamic=false'
                     
                 elif selected_option == 'Web':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/remote-front-end-engineer-jobs-SRCH_IL.0,6_IS12563_KO7,25.htm&dynamic=false'
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/remote-front-end-engineer-jobs-SRCH_IL.0,6_IS12563_KO7,25.htm&dynamic=false'
 
                     
                 elif selected_option == 'Law':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/remote-law-jobs-SRCH_IL.0,6_IS12563_KO7,10.htm&dynamic=false'
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/remote-law-jobs-SRCH_IL.0,6_IS12563_KO7,10.htm&dynamic=false'
                                       
                     
                 elif selected_option == 'DM':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/remote-digital-marketing-jobs-SRCH_IL.0,6_IS12563_KO7,24.htm&dynamic=false'
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/remote-digital-marketing-jobs-SRCH_IL.0,6_IS12563_KO7,24.htm&dynamic=false'
 
                 elif selected_option=='CS':
-                    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/Job/remote-cyber-security-jobs-SRCH_IL.0,6_IS12563_KO7,21.htm&dynamic=false'
+                    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/Job/remote-cyber-security-jobs-SRCH_IL.0,6_IS12563_KO7,21.htm&dynamic=false'
          
                 job_links_headlines1=job_links_headlines(target_url)
 
