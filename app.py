@@ -127,7 +127,8 @@ def summary(text12):
 # proveiding the job links and title
 @app.route('/jobDetails')
 def jobDetails():
-    target_url='https://api.scrapingdog.com/scrape?api_key=66177cdf8eb18b440dc70d8b&url=https://www.glassdoor.co.in/job-listing/sr-director-strategy-analytics-glassdoor-JV_IC1128808_KO0,30_KE31,40.htm?jl=1009230852766&cs=1_3b64d045&s=21&t=ESR&pos=104&src=GD_JOB_AD&guid=0000018ecbc5b317ae8e5309b9511577&jobListingId=1009230852766&ea=1&ao=1136043&vt=w&jrtk=5-yul1-0-1hr5sbcsdikfu800-a5fa077afc33e2b5&cb=1712815715333&ctt=1712815719976&srs=EI_JOBS&dynamic=false'
+    #api = os.get(env[api])
+    target_url=f'https://api.scrapingdog.com/scrape?api_key={api}&url=https://www.glassdoor.co.in/job-listing/sr-director-strategy-analytics-glassdoor-JV_IC1128808_KO0,30_KE31,40.htm?jl=1009230852766&cs=1_3b64d045&s=21&t=ESR&pos=104&src=GD_JOB_AD&guid=0000018ecbc5b317ae8e5309b9511577&jobListingId=1009230852766&ea=1&ao=1136043&vt=w&jrtk=5-yul1-0-1hr5sbcsdikfu800-a5fa077afc33e2b5&cb=1712815715333&ctt=1712815719976&srs=EI_JOBS&dynamic=false'
 
     job_links_headlines1=job_links_headlines(target_url)
     headers=["Job headline","URL of Jobs", "Copy URL"]
